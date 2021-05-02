@@ -1,15 +1,19 @@
 .card
-  height: 250px
-  width: 800px
-  border-radius: 8px
-  .row
-    display: flex
-    flex-direction: row
-    flex-wrap: wrap
-    width: 100%
+  width: 300px
+  border-bottom-left-radius: 10px
+  border-bottom-right-radius: 10px
+  .row.main-row
+    display: block
+    .bottom-section
+      clear: both
     .left-column
       flex: 0 0 39%
-      .left-column__img
+      .card-drawers__mobile-image
+        display: block
+        border-top-left-radius: 10px
+        border-top-right-radius: 10px
+      .card-drawers__image
+        display: none
         position: relative
         width: 100%
         border-top-left-radius: 8px
@@ -17,15 +21,183 @@
     .right-column
       border-top-right-radius: 8px
       border-bottom-right-radius: 8px
-      padding: 1rem
+      border-bottom-left-radius: 10px
+      // padding: 1rem
       flex: 0 0 61%
       max-height: 100%
       text-align: left
-      background-color: #fff        
-      h3
-        color: hsl(217, 19%, 35%)
-        padding-bottom: 1rem
-        font-weight: 500
-      p
-        color: hsl(212, 23%, 69%)
-        font-size: 0.8rem
+      background-color: #fff
+      .top-section
+        padding: 2rem        
+        h3
+          color: hsl(217, 19%, 35%)
+          padding-bottom: 1rem
+          font-weight: 500
+        p
+          color: hsl(212, 23%, 69%)
+          font-size: 0.8rem
+          line-height: 2
+      .row.secondary-row
+        display: flex
+        flex-direction: row
+        flex-wrap: nowrap
+        width: 100%
+        // height: 0
+        .left-column
+          display: flex
+          flex: 0 0 70%
+          padding: 2rem
+          padding-top: 0
+          padding-right: 0
+          padding-bottom: 1rem
+          .card-avatar__name
+            color: hsl(217, 19%, 35%)
+            font-size: .75rem
+            padding-left: .5rem
+            position: relative
+            top: 10px
+            padding-bottom: 10px
+            font-weight: 700
+          .card-avatar__date
+            padding-top: 4px
+            color: hsl(212, 23%, 69%)
+        .right-column
+          display: none
+          flex: 0 0 30%
+          .share-icon__svg
+            background-color: hsl(210, 46%, 95%)
+            width: 32px
+            height: 32px
+            border-radius: 50px
+            padding-top: 9px
+            padding-left: 8px
+            position: relative
+            top: 18px
+            left: -30px
+            display: flex
+            margin-left: auto
+            flex: 0 0 30%
+            // content: ""
+            // background-image: url('/assets/images/icon-share.svg')
+            // background-size: 13px 13px
+            // background-repeat: no-repeat
+            // background-position: 9px 8px
+            cursor: pointer
+          input
+            display: none  
+          input:checked + label + .sharepop-wrapper > #sharePopup
+            opacity: 1
+            display: block
+            transition: opacity .25s ease-in-out
+            top: -80px
+            // left: -209px
+          input:checked + label > svg
+            background-color: hsl(220, 20%, 61%)
+            & path
+              fill: #fff !important
+        .sharepop-wrapper__mobile
+          input:checked
+            & + label > svg
+              background-color: hsl(220, 20%, 61%)
+              z-index: 999
+              & path
+                fill: #fff !important
+            & + label + #sharePopupMobile
+              display: block
+              visibility: visible
+              opacity: 1
+              animation-name: fadeInOpacity2
+              animation-iteration-count: 1
+              animation-timing-function: ease-in
+              animation-duration: .5s
+            @keyframes fadeInOpacity2
+              0% 
+                opacity: 0
+              100% 
+                opacity: 1
+
+
+
+@media only screen and (min-width: 768px)
+  .card
+    width: 800px
+    border-radius: 8px
+    .row.main-row
+      display: flex
+      flex-direction: row
+      flex-wrap: wrap
+      width: 100%
+      .bottom-section
+        clear: both
+      .left-column
+        flex: 0 0 39%
+        .card-drawers__mobile-image
+          display: none
+        .card-drawers__image
+          display: block
+          position: relative
+          width: 100%
+          border-top-left-radius: 8px
+          border-bottom-left-radius: 8px
+      .right-column
+        border-top-right-radius: 8px
+        border-bottom-right-radius: 8px
+        // padding: 1rem
+        flex: 0 0 61%
+        max-height: 100%
+        text-align: left
+        background-color: #fff
+        .top-section
+          padding: 2rem        
+          h3
+            color: hsl(217, 19%, 35%)
+            padding-bottom: 1rem
+            font-weight: 500
+          p
+            color: hsl(212, 23%, 69%)
+            font-size: 0.8rem
+            line-height: 2
+        .row.secondary-row
+          display: flex
+          flex-direction: row
+          flex-wrap: wrap
+          width: 100%
+          height: 0
+          .left-column
+            display: flex
+            flex: 0 0 50%
+            padding: 1.4rem
+            padding-top: 0
+            .card-avatar__name
+              color: hsl(217, 19%, 35%)
+              font-size: .75rem
+              padding-left: .5rem
+              position: relative
+              top: 10px
+              padding-bottom: 10px
+              font-weight: 700
+            .card-avatar__date
+              padding-top: 4px
+              color: hsl(212, 23%, 69%)
+          .right-column
+            display: block
+            flex: 0 0 48%
+            .share-icon
+              top: 14px
+              left: -59px
+            input
+              display: none  
+            input:checked + label + .sharepop-wrapper > #sharePopup
+              visibility: visible
+              opacity: 1
+              animation-name: fadeInOpacity
+              animation-iteration-count: 1
+              animation-timing-function: ease-in
+              animation-duration: .5s
+            @keyframes fadeInOpacity 
+              0% 
+                opacity: 0
+              100% 
+                opacity: 1
+              
+
